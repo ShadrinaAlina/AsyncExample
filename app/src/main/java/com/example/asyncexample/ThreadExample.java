@@ -10,7 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class ThreadExample extends AppCompatActivity {
+    ExecutorService service = Executors.newFixedThreadPool (3 );
     int mCounter;
     Handler handler = new Handler (){
         @Override
@@ -39,12 +44,13 @@ public class ThreadExample extends AppCompatActivity {
                             e.printStackTrace ( );
                         }
                     }
-                    Log.i ("SPARROWS", ("Сегодня ворон было" + mCounter++ + "  штук") );
+                    Log.i ("SPARROWS", ("Сегодня ворон было" + mCounter++ + "  штук"));
                     handler.sendEmptyMessage (0);
                 }
-            }
-        };
-        Thread thread = new Thread (runnable);
-        thread.start ();
+                }
+            };
+//        Thread thread = new Thread (runnable);
+//        thread.start ();
+        service.execute (runnable);
     }
 }
