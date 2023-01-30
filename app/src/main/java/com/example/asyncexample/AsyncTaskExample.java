@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 
 public class AsyncTaskExample extends AppCompatActivity {
 
@@ -14,6 +15,9 @@ public class AsyncTaskExample extends AppCompatActivity {
 
         MyAsyncTask asyncTask = new MyAsyncTask ();
         asyncTask.execute ("Hello world!");
+    }
+    public void onClick(View view){
+
     }
 }
 class MyAsyncTask extends AsyncTask<String, Integer, Integer>{
